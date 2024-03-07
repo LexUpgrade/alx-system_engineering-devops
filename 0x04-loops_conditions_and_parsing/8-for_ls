@@ -4,10 +4,11 @@
 # Where only the part of the name after the first dash is
 #+ displayed.
 
-for i in `ls`
+LS=$(ls)
+for i in $LS
 do
-	FILE=`echo $i | cut -d '-' -f 2-`
-	echo $FILE
+	FILE=$( echo "$i" | cut -d '-' -f 2- )
+	echo "$FILE"
 done
 
 exit 0
