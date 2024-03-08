@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Displays a list of currently running processes.
 
-ps -e --forest o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd
+ps -He --forest -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command
