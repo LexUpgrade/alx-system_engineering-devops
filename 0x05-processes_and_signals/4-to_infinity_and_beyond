@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Displays 'To infinity and beyond' indefinitely.
+# Unless an interrupt occurs. E.g 'Ctrl + C'.
+
+trap "exit" 2
+
+i=0
+while [ "$i" -lt "1" ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
