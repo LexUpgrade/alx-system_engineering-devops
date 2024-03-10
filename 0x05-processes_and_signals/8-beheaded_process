@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Interrupts and terminates the invisible process '7-highlander' for good.
+
+pkill -f -9 7-highlander
