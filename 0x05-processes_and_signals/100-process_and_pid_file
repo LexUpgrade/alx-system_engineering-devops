@@ -9,12 +9,11 @@
 trap "rm -rf /var/run/myscript.pid ; echo 'I hate the kill command' ; exit" 15
 trap "echo 'Y U no love me?!' ; exit" 2
 
-PID=$( pgrep -f $0 )
+PID=$( pgrep -f "$0" )
 export FILE="/var/run/myscript.pid"
 echo "$PID" > "$FILE"
 
-i=1
-while [ "$i" -eq "1" ]
+while true
 do
 	echo "To infinity and beyond"
 	sleep 2
