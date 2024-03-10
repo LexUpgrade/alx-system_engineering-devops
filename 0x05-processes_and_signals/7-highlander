@@ -2,10 +2,10 @@
 # An infinite loop that echos 'To infinity and beyond' and
 # 'I am invicible!!!' when an SIGTERM signal is rescieved.
 
-trap 'echo "I am invicible!!!"' 15
 
 while true
 do
 	echo "To infinity and beyond"
 	sleep 2
+	trap 'echo "I am invincible!!!"' SIGTERM
 done

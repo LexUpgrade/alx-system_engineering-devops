@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Terminate '4-to_infinity_and_beyond' without kill or killall
 
-pkill -f -15 7-highlander
+pkill -f 7-highlander
