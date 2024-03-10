@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# An infinite loop that echos 'To infinity and beyond' and
+# 'I am invicible!!!' when an SIGTERM signal is rescieved.
+
+trap "echo 'I am invicible!!!'" 15
+
+i=1
+while [ "$i" -eq "1" ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
