@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Modifies the /etc/hosts file:
+#	Assigning new IP resolutions: (localhost & facebook.com)
+#		127.0.0.2 --> localhost
+#		8.8.8.8   --> facebook.com
+echo "127.0.0.2	localhost" > /etc/hosts
+echo "8.8.8.8	facebook.com" >> /etc/hosts
