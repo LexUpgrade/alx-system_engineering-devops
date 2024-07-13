@@ -1,23 +1,25 @@
 #!/usr/bin/env bash
 # Installs and setup haproxy
 
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
-apt-get -y update
-apt-get install -y haproxy=1.8.\*
+apt-get update -y && apt-get upgrade -y
+apt-get install -y haproxy
 
-echo "ENABLED=1" > /etc/default/haproxy
+LOAD_BALANCER=\
+"
+backend load_balancer
+    balance roundrobin
+    server web-01 web-01.lexcraft.tech:80 check
+    server web-02 web-02.lexcraft.tech:80 check
+ 
+frontend http
+    bind *:80
+    mode http
 
-# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-echo "
-   listen load_balancer
-   bind *:80
-   mode http
-   balance roundrobin
-   option httpclose
-   option forwardfor
-   server 426052-web-01 100.26.237.204:80 check
-   server 426052-web-02 3.90.70.242:80 check
-" >> /etc/haproxy/haproxy.cfg
+    default_backend load_balancer"
 
-service haproxy start
+bash -c "echo -e '$LOAD_BALANCER' >> /etc/haproxy/haproxy.cfg"
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+    service haproxy start
+else
+    service haproxy restart
+fi
