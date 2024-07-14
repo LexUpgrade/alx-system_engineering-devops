@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 # Displays information about subdomains.
 
-if [ $# -eq 2 ]; then
+domain_datas () {
     url="$2.$1"
-    dig "$url" | grep -Eo "lexcraft.tech.+([0-9]+\.){3}[0-9]+" | \
-        awk -v subdomain="$2" '{print "The subdomain", subdomain, "is a", $4, "record and points to", $5}'
-else
-    list=("www" "lb-01" "web-01" "web-02")
+    line="$(dig "$url" | grep -Eo "$2\.$1.+([0-9]+\.)[0-9]+")"
+    echo "$2 $line" |  awk '{print "The subdomain", $1, "is a", $5, "record and points to", $6}'
+}
 
+if [ "$#" == 2 ]; then
+    domain_datas "$1" "$2"
+elif [ "$#" == 1 ]; then
+    list=("www" "lb-01" "web-01" "web-02")
     for sub in "${list[@]}"; do
-        url="$sub.$1"
-        dig "$url" | grep -Eo "lexcraft.tech.+([0-9]+\.){3}[0-9]+" | \
-            awk -v subdomain="$sub" '{print "The subdomain", subdomain, "is a", $4, "record and points to", $5}'
+        domain_datas "$1" "$sub"
     done
 fi
