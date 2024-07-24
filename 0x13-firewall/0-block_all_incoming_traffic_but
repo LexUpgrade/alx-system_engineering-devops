@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Installs ufw and set up few rules
+apt-get install ufw
+ufw --force enable
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 80/tcp
+ufw status
+service ufw status
