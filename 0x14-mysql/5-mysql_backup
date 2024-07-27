@@ -11,7 +11,7 @@ BACK_UP_FILE="backup.sql"
 ARCHIVE_FILE="$(date +'%d-%m-%Y').tar.gz"
 
 # Generate a MySQL dump on all databases.
-mysqldump -u root -p"$ADMIN_PASSWORD" --all-databases > "$BACK_UP_FILE" 2> /dev/null
+mysqldump -u root -p"$ADMIN_PASSWORD" --all-databases > "$BACK_UP_FILE"
 
 # Generate an archive of the MySQL Databases.
 tar -cvzf "$ARCHIVE_FILE" "$BACK_UP_FILE"
