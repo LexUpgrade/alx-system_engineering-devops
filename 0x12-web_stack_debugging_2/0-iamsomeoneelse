@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Create a newuser and run the command 'whoami'
+
+sudo -u "$1" whoami
