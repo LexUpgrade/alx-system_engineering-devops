@@ -13,12 +13,12 @@ for usr in users:
                 usr.get("id"))).json()
     usr_todos = list()
     for i in todos:
-        l = list()
-        l.append(usr.get('username'))
+        item = list()
+        item.append(usr.get('username'))
         for k, v in i.items():
             if k in ['title', 'completed']:
-                l.append(v)
-        new = dict(zip(['username', 'task', 'completed'], l))
+                item.append(v)
+        new = dict(zip(['username', 'task', 'completed'], item))
         usr_todos.append(new)
     full_list.update({usr.get("id"): usr_todos})
 
