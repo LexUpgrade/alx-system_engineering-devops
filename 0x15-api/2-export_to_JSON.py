@@ -9,7 +9,7 @@ import json
 
 
 if len(argv) != 2:
-    print("Usage: {} <id>".format(agv[0]))
+    print("Usage: {} <id>".format(argv[0]))
     exit(1)
 
 id = argv[1]
