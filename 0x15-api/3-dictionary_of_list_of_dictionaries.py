@@ -13,12 +13,13 @@ for usr in users:
                 usr.get("id"))).json()
     usr_todos = list()
     for i in todos:
-        d = dict()
-        d['username'] = usr.get('username')
+        l = list()
+        l.append(usr.get('username'))
         for k, v in i.items():
             if k in ['title', 'completed']:
-                d[k] = v
-        usr_todos.append(d)
+                l.append(v)
+        new = dict(zip(['username', 'task', 'completed'], l))
+        usr_todos.append(new)
     full_list.update({usr.get("id"): usr_todos})
 
 with open("todo_all_employees.json", mode="w", newline="") as file:
