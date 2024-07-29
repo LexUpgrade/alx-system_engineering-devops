@@ -7,6 +7,7 @@ from requests import get
 from sys import argv
 import json
 
+
 if len(argv) != 2:
     print("Usage: {} <id>".format(agv[0]))
     exit(1)
@@ -20,7 +21,7 @@ for i in todos:
     r = {}
     for j in ["title", "completed"]:
         r[j] = i[j]
-    r['username'] = user['username']
+    r['username'] = user.get("username")
     new.append(r)
 
 fields = ["task", "completed", "username"]
