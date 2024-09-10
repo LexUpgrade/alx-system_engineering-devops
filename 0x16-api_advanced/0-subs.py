@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines a function <number_of_subscribers>."""
 
+
 def number_of_subscribers(subreddit):
     """Queries a Reddit API and return the number of subscribers of a
     given subreddit.
